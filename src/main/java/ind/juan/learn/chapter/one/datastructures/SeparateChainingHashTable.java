@@ -7,13 +7,16 @@ import javafx.animation.KeyValue;
  */
 public class SeparateChainingHashTable<K, V> {
     private ArrayList<KeyValuePair<K, V>>[] table;
-    private double loadFactor;
     private static final int DEFAULT_SIZE = 20;
     private int size;
 
     public SeparateChainingHashTable() {
         this.table = new ArrayList[DEFAULT_SIZE];
-        this.loadFactor = 0 / this.table.length;
+        this.size = 0;
+    }
+
+    public SeparateChainingHashTable(int size) {
+        this.table = new ArrayList[size];
         this.size = 0;
     }
 
@@ -42,13 +45,22 @@ public class SeparateChainingHashTable<K, V> {
     }
 
     private void expand() {
-        ArrayList<KeyValuePair<K, V>>[] newTable = new ArrayList[this.table.length * 2];
-        System.arraycopy(this.table, 0, newTable, 0, this.table.length);
-        this.table = newTable;
+        SeparateChainingHashTable<K, V> newTable = new SeparateChainingHashTable<K, V>(this.table.length * 2);
+        for (int i = 0; i < this.table.length; i++) {
+            if (this.table[i] != null) {
+                for (int j = 0; j < this.table[i].size(); j++) {
+                    KeyValuePair<K,V> pair = new KeyValuePair<K, V>(this.table[i].get(j).getKey(),
+                                                                    this.table[i].get(j).getValue());
+                    newTable.put(pair.getKey(), pair.getValue());
+                }
+            }
+        }
+        this.table = newTable.table;
+        this.size = newTable.size;
     }
 
     private double getLoadFactor() {
-        return this.size / table.length;
+        return (double)this.size / (double)table.length;
     }
 
     private boolean isTooLoaded() {

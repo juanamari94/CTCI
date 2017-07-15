@@ -23,9 +23,12 @@ public class SeparateChainingHashTableTest extends TestCase {
     }
 
     @Test
-    public void testCollision() {
-        for(int i = 0; i < 30; i++) {
+    public void testCollisionAndExpansion() {
+        for (int i = 0; i < 30; i++) {
             this.hashTable.put("key " + i, "value " + i);
+        }
+        for (int i = 0; i < 30; i ++) {
+            assertEquals("value " + i, this.hashTable.get("key " + i));
         }
     }
 }
