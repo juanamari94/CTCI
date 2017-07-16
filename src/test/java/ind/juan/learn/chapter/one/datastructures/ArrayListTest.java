@@ -39,7 +39,7 @@ public class ArrayListTest extends TestCase {
         this.list.add(3);
         this.list.add(4);
         Integer removed = this.list.remove(1);
-        assert(removed == 1);
+        assert(removed == 2);
         assert(this.list.get(0) == 1);
         assert(this.list.size() == 3);
     }
