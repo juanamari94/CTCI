@@ -66,10 +66,8 @@ public class SeparateChainingHashTable<K, V> {
                 if (this.table[index].get(i).getKey().equals(key))
                     return this.table[index].get(i).getValue();
             }
-            return null;
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -81,8 +79,9 @@ public class SeparateChainingHashTable<K, V> {
         for (int i = 0; i < this.table.length; i++) {
             if (this.table[i] != null) {
                 for (int j = 0; j < this.table[i].size(); j++) {
-                    KeyValuePair<K,V> pair = new KeyValuePair<K, V>(this.table[i].get(j).getKey(),
-                                                                    this.table[i].get(j).getValue());
+                    KeyValuePair<K, V> pair = new KeyValuePair<K, V>(
+                            this.table[i].get(j).getKey(),
+                            this.table[i].get(j).getValue());
                     newTable.put(pair.getKey(), pair.getValue());
                 }
             }
