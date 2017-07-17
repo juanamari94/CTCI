@@ -29,7 +29,7 @@ public class ExpandingStringBuffer {
         }
     }
 
-    public void clear(String input) {
+    public void clear() {
         ExpandingStringBuffer newBuffer = new ExpandingStringBuffer();
         this.buffer = newBuffer.buffer;
         this.size = 0;

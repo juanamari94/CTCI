@@ -34,4 +34,10 @@ public class ExpandingStringBufferTest extends TestCase {
         ExpandingStringBuffer newBuffer = new ExpandingStringBuffer(expected);
         assertEquals(expected, newBuffer.toString());
     }
+
+    @Test
+    public void testClear() {
+        this.stringBuffer.clear();
+        assertEquals("", this.stringBuffer.toString());
+    }
 }
