@@ -25,7 +25,19 @@ public class ExpandingStringBuffer {
         this.manageSpace(input);
         for (int i = 0; i < input.length(); i++) {
             this.buffer[this.size + i] = input.charAt(i);
+            this.size += 1;
         }
+    }
+
+    // TODO: add delete
+    public void deleteSubstring(String input) {
+
+    }
+
+    public void clear(String input) {
+        ExpandingStringBuffer newBuffer = new ExpandingStringBuffer();
+        this.buffer = newBuffer.buffer;
+        this.size = 0;
     }
 
     private void manageSpace(String input) {
@@ -38,5 +50,11 @@ public class ExpandingStringBuffer {
         char[] newBuffer = new char[minimumLength * 2];
         System.arraycopy(newBuffer, 0, this.buffer, 0, minimumLength);
         this.buffer = newBuffer;
+    }
+
+    public String toString() {
+        char[] returnedBuffer = new char[this.size];
+        System.arraycopy(this.buffer, 0, returnedBuffer, 0, this.size);
+        return new String(returnedBuffer);
     }
 }
