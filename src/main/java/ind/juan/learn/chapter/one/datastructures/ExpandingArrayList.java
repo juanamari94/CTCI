@@ -3,16 +3,16 @@ package ind.juan.learn.chapter.one.datastructures;
 /**
  * Created by juanamari on 7/12/17.
  */
-public class ArrayList<T> {
+public class ExpandingArrayList<T> {
     private Object[] array;
     private static final int DEFAULT_SIZE = 20;
     private int size = 0;
 
-    public ArrayList() {
+    public ExpandingArrayList() {
         this.array = new Object[DEFAULT_SIZE];
     }
 
-    public ArrayList(int size) {
+    public ExpandingArrayList(int size) {
         this.array = new Object[size];
     }
 

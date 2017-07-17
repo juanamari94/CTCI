@@ -4,17 +4,17 @@ package ind.juan.learn.chapter.one.datastructures;
  * Created by juanamari on 7/12/17.
  */
 public class SeparateChainingHashTable<K, V> {
-    private ArrayList<KeyValuePair<K, V>>[] table;
+    private ExpandingArrayList<KeyValuePair<K, V>>[] table;
     private static final int DEFAULT_SIZE = 20;
     private int size;
 
     public SeparateChainingHashTable() {
-        this.table = new ArrayList[DEFAULT_SIZE];
+        this.table = new ExpandingArrayList[DEFAULT_SIZE];
         this.size = 0;
     }
 
     public SeparateChainingHashTable(int size) {
-        this.table = new ArrayList[size];
+        this.table = new ExpandingArrayList[size];
         this.size = 0;
     }
 
@@ -28,7 +28,7 @@ public class SeparateChainingHashTable<K, V> {
         if (this.isTooLoaded()) this.expand();
         int index = this.getIndex(key);
         if (this.table[index] == null) {
-            this.table[index] = new ArrayList<KeyValuePair<K, V>>();
+            this.table[index] = new ExpandingArrayList<KeyValuePair<K, V>>();
             this.size += 1;
         }
         this.table[index].add(new KeyValuePair(key, value));

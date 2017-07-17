@@ -7,10 +7,10 @@ import org.junit.Test;
  */
 public class ArrayListTest extends TestCase {
 
-    private ArrayList<Integer> list;
+    private ExpandingArrayList<Integer> list;
 
     protected void setUp(){
-        this.list = new ArrayList<Integer>();
+        this.list = new ExpandingArrayList<Integer>();
     }
 
     @Test
