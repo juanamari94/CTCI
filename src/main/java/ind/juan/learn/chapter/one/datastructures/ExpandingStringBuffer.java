@@ -15,8 +15,8 @@ public class ExpandingStringBuffer {
 
     public ExpandingStringBuffer(String input) {
         this.buffer = new char[input.length() * 2];
-        System.arraycopy(input.toCharArray(), 0, this.buffer, 0, input.toCharArray().length);
-        this.size = input.length();
+        this.size = 0;
+        this.append(input);
     }
 
     public void append(String input) {
@@ -24,14 +24,9 @@ public class ExpandingStringBuffer {
         if (input.length() == 0) return;
         this.manageSpace(input);
         for (int i = 0; i < input.length(); i++) {
-            this.buffer[this.size + i] = input.charAt(i);
+            this.buffer[this.size] = input.charAt(i);
             this.size += 1;
         }
-    }
-
-    // TODO: add delete
-    public void deleteSubstring(String input) {
-
     }
 
     public void clear(String input) {
@@ -48,7 +43,7 @@ public class ExpandingStringBuffer {
 
     private void expand(int minimumLength) {
         char[] newBuffer = new char[minimumLength * 2];
-        System.arraycopy(newBuffer, 0, this.buffer, 0, minimumLength);
+        System.arraycopy(newBuffer, 0, this.buffer, 0, this.size);
         this.buffer = newBuffer;
     }
 
