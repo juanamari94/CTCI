@@ -3,17 +3,17 @@ package ind.juan.learn.chapter.one.datastructures;
 /**
  * Created by juanamarine on 17/07/17.
  */
-public class ExpandingStringBuffer {
+public class ExpandingStringBuilder {
     private char[] buffer;
     private int size;
     private static final int DEFAULT_BUFFER_SIZE = 20;
 
-    public ExpandingStringBuffer() {
+    public ExpandingStringBuilder() {
         this.buffer = new char[DEFAULT_BUFFER_SIZE];
         this.size = 0;
     }
 
-    public ExpandingStringBuffer(String input) {
+    public ExpandingStringBuilder(String input) {
         this.buffer = new char[input.length() * 2];
         this.size = 0;
         this.append(input);
@@ -30,7 +30,7 @@ public class ExpandingStringBuffer {
     }
 
     public void clear() {
-        ExpandingStringBuffer newBuffer = new ExpandingStringBuffer();
+        ExpandingStringBuilder newBuffer = new ExpandingStringBuilder();
         this.buffer = newBuffer.buffer;
         this.size = 0;
     }
