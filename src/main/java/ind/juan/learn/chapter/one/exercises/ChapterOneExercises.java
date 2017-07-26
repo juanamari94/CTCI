@@ -169,7 +169,7 @@ class ChapterOneExercises {
                 index -= 3;
             } else {
                 str[index - 1] = str[i];
-                index -= 1;
+                index -=1;
             }
         }
     }
